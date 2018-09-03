@@ -6,6 +6,3 @@
 <h3><b>Texto:</b> {{$mensagem->texto}}</h3>
 <h3><b>Criada em:</b> {{$mensagem->created_at}}</h3>
 <h3><b>Atualizada em:</b> {{$mensagem->updated_at}}</h3>
-
-
-<!-- \Carbon\Carbon::parse($atividade->scheduledto)->format('d/m/Y h:m')  -->

@@ -1,4 +1,4 @@
-<h1>Formulário de Cadastro de Mensagem</h1>
+<h1>Formulário de Cadastro de Mensagens</h1>
 <hr>
 
   <!-- EXIBE MENSAGENS DE ERROS -->
@@ -16,8 +16,8 @@
 
 <form action="/mensagens" method="post">
 	{{ csrf_field() }}
-	Título: 		<input type="text" name="titulo"> 	     <br>
-	texto:		<input type="text" name="texto">   <br>
-	Autor:  <input type="text" name="autor">   <br>
+	Título: 		<input type="text" name="titulo"><br>
+	Texto:		<input type="text" name="texto"><br>
+	Autor:  <input type="text" name="autor"><br>
 	<input type="submit" value="Salvar">
 </form>

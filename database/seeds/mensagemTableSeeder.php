@@ -1,8 +1,6 @@
 <?php
-
 use Illuminate\Database\Seeder;
 use App\Mensagem;
-
 class mensagemTableSeeder extends Seeder
 {
     /**
@@ -17,7 +15,6 @@ class mensagemTableSeeder extends Seeder
             'texto' => 'Olá mundo...',
             'autor' => 'Tiago'
         ]);
-
         Mensagem::create([
             'titulo' => 'Olá final',
             'texto' => 'Olá mundo...final..',
