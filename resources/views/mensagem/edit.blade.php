@@ -14,6 +14,8 @@
 	</div>
   @endif
 
+
+
 <form action="/mensagens/{{$mensagem->id}}" method="POST">
 	{{ csrf_field() }}
 	{{ method_field('PUT') }}

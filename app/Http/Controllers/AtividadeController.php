@@ -127,7 +127,7 @@ class AtividadeController extends Controller
 
         //executa as validações
         if ($validador->fails()) {
-            return redirect('atividades/$id/edit')
+            return redirect("atividades/$id/edit")
             ->withErrors($validador)
             ->withInput($request->all);
         }
@@ -165,6 +165,6 @@ class AtividadeController extends Controller
     {
         $obj_atividade = Atividade::findOrFail($id);
         $obj_atividade->delete($id);
-        return redirect('/atividades')->with('sucess','Atividade excluída com Sucesso!!');
+        return redirect('/atividades')->with('success','Atividade excluída com Sucesso!!');
     }
 }
