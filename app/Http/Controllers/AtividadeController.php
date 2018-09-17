@@ -23,7 +23,7 @@ class AtividadeController extends Controller
         return view('atividade.list',['atividades' => $listaAtividades]);
         }
        
-    
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -75,8 +75,9 @@ class AtividadeController extends Controller
         $obj_Atividade->title =       $request['title'];
         $obj_Atividade->description = $request['description'];
         $obj_Atividade->scheduledto = $request['scheduledto'];
+        $obj_Atividade->user_id = Auth::id();
         $obj_Atividade->save();
-        $obj_Atividade->user(); = Auth::id();
+        
 
         return redirect('/atividades')->with('success', 'Atividade criada com sucesso!!');
     }
@@ -145,6 +146,7 @@ class AtividadeController extends Controller
         $obj_atividade->title =       $request['title'];
         $obj_atividade->description = $request['description'];
         $obj_atividade->scheduledto = $request['scheduledto'];
+        $obj_atividade->user_id = Auth::id();
         $obj_atividade->save();
 
         return redirect('/atividades')->with('success', 'Atividade alterada com sucesso!!');

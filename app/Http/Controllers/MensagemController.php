@@ -3,6 +3,9 @@ namespace App\Http\Controllers;
 use App\Mensagem;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Validator;
+use \Illuminate\Support\Facades\Auth;
+
+
 class MensagemController extends Controller
 {
     /**
@@ -18,6 +21,7 @@ class MensagemController extends Controller
              $listaMensagens = Mensagem::all();
         return view('mensagem.list',['mensagens' => $listaMensagens]);
         }
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -61,6 +65,7 @@ class MensagemController extends Controller
         $obj_Mensagem->titulo =       $request['titulo'];
         $obj_Mensagem->texto = $request['texto'];
         $obj_Mensagem->autor = $request['autor'];
+        $obj_Mensagem->user_id = Auth::id();
         $obj_Mensagem->save();
         return redirect('/mensagens')->with('success', 'Mensagem criada com sucesso!!');
     }
@@ -126,6 +131,7 @@ class MensagemController extends Controller
         $obj_atividade->titulo =       $request['titulo'];
         $obj_atividade->texto = $request['texto'];
         $obj_atividade->autor = $request['autor'];
+        $obj_atividade->user_id = Auth::id();
         $obj_atividade->save();
 
         return redirect('/mensagens')->with('success', 'Mensagem alterada com sucesso!!');
