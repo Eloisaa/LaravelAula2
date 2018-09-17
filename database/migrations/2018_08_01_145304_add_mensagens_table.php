@@ -19,6 +19,8 @@ class AddMensagensTable extends Migration
             $table->string('texto');    //texto da mensagem
             $table->string('autor');    //autor da mensagem
             $table->timestamps();       //registro created_at e updated_at
+            $table->integer('user_id')->unsigned();
+
         });
     }
 

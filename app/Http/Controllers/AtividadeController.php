@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Atividade;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Validator;
+use \Illuminate\Support\Facades\Auth;
 
 class AtividadeController extends Controller
 {
@@ -15,9 +16,14 @@ class AtividadeController extends Controller
      */
     public function index()
     {
-        $listaAtividades = Atividade::all();
+        if(Auth::check()){
+            $listaAtividades = Atividade::where('user_id', Auth::id())->get();
+        }else{
+             $listaAtividades = Atividade::all();
         return view('atividade.list',['atividades' => $listaAtividades]);
-    }
+        }
+       
+    
 
     /**
      * Show the form for creating a new resource.
@@ -51,6 +57,7 @@ class AtividadeController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required',
             'scheduledto' => 'required|string',
+
         );
 
         //cria o objeto com as regras de validação
@@ -69,6 +76,7 @@ class AtividadeController extends Controller
         $obj_Atividade->description = $request['description'];
         $obj_Atividade->scheduledto = $request['scheduledto'];
         $obj_Atividade->save();
+        $obj_Atividade->user(); = Auth::id();
 
         return redirect('/atividades')->with('success', 'Atividade criada com sucesso!!');
     }

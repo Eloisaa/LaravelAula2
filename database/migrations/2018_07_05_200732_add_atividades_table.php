@@ -19,6 +19,7 @@ class AddAtividadesTable extends Migration
             $table->string('description');      //descrição da atividade
             $table->dateTime('scheduledto');    //agendado para
             $table->timestamps();               //registro created_at e updated_at
+            $table->integer('user_id')->unsigned();
         });
     }
 

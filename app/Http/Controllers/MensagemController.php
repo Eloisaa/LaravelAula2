@@ -10,11 +10,14 @@ class MensagemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+     public function index()
     {
-        $listaMensagens = Mensagem::all();
+        if(Auth::check()){
+            $listaMensagens = Mensagem::where('user_id', Auth::id())->get();
+        }else{
+             $listaMensagens = Mensagem::all();
         return view('mensagem.list',['mensagens' => $listaMensagens]);
-    }
+        }
     /**
      * Show the form for creating a new resource.
      *
