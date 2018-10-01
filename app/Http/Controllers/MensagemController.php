@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Atividade;
 use App\Mensagem;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Validator;
@@ -16,12 +17,15 @@ class MensagemController extends Controller
      public function index()
     {
         if(Auth::check()){
-            $listaMensagens = Mensagem::where('user_id', Auth::id())->get();
+            $listaMensagens = Mensagem::where('user_id', Auth::id())->paginate(3);
         }else{
-             $listaMensagens = Mensagem::all();
-        return view('mensagem.list',['mensagens' => $listaMensagens]);
+             $listaMensagens = Mensagem::paginate(3);
         }
+
+        return view('mensagem.list',['mensagens' => $listaMensagens]);
     }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,7 +33,8 @@ class MensagemController extends Controller
      */
     public function create()
     {
-        return view('mensagem.create');
+        $atividades = Atividade::all();
+        return view('mensagem.create',['atividades'=>$atividades]);
     }
     /**
      * Store a newly created resource in storage.
@@ -66,6 +71,7 @@ class MensagemController extends Controller
         $obj_Mensagem->texto = $request['texto'];
         $obj_Mensagem->autor = $request['autor'];
         $obj_Mensagem->user_id = Auth::id();
+        $obj_Mensagem->atividade_id = $request['atividade_id'];
         $obj_Mensagem->save();
         return redirect('/mensagens')->with('success', 'Mensagem criada com sucesso!!');
     }

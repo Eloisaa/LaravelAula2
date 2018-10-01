@@ -11,7 +11,7 @@
   @endif
 
 @foreach($mensagens as $mensagem)
-	<h3>Título: <b><a href="/mensagens/{{$mensagem->id}}">{{$mensagem->titulo}}</a></b></h3>
+	<h3>Título: <b><a href="/mensagens/{{$mensagem->id}}">{{$mensagem->titulo}}</a></p></h3>
   <p>Autor: <b>{{$mensagem->autor}}</b></p>
 	<p>Texto: <b>{{$mensagem->texto}}</b></p>
   @auth
@@ -23,6 +23,8 @@
   @endauth
 	<br>
 @endforeach
+
+{{$mensagens ->links()}}
 
 <br>
 
