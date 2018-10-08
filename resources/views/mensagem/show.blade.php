@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <h1>Mensagem {{$mensagem->id}}</h1>
 <hr>
 <h3><b>Ref. Ativ.:</b> {{$mensagem->atividade->id}}</h3>
@@ -7,5 +11,6 @@
 <h3><b>Título:</b> {{$mensagem->titulo}}</h3>
 <h3><b>Texto:</b> {{$mensagem->texto}}</h3>
 <h3><b>Criada em:</b> {{\Carbon\Carbon::parse($mensagem->created_at)->format('d/m/Y h:m')}}</h3>
-<h3><b>Atualizada em:</b> {{\Carbon\Carbon::parse($mensagem->update_at)->format('d/m/Y h:m')}}}</h3>
+<h3><b>Atualizada em:</b> {{\Carbon\Carbon::parse($mensagem->update_at)->format('d/m/Y h:m')}}</h3>
 
+@endsection
